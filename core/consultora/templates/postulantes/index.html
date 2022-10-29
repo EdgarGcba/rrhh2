@@ -1,0 +1,62 @@
+{% extends "base.html"%}
+{% load crispy_forms_tags %}
+
+{% block titulo %} Lista de Postulantes {% endblock %}
+
+{% block contenido %} 
+<br>
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Buscar Postulantes</h4>
+        <div class="body">
+            <form method='POST' action=''>{% csrf_token %}
+            {{form|crispy}}
+                <input class = "btn btn-success"  type="submit" value='Buscar'/>
+            </form>
+        </div>
+    </div>
+</form>
+</div>
+
+<br>
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar nuevo Postulante</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Postulantes</h4>
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Num Documento</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for postulante in postulantes %}
+                        <tr>
+                            <td>{{ postulante.id }}</td>
+                            <td>{{ postulante.nombre }}</td>
+                            <td>{{ postulante.apellido }}</td>
+                            <td>{{ postulante.tipodocumento }}</td>
+                            <td>{{ postulante.numdocumento }}</td>
+                            <td> <a name="" id="" class="btn btn-info" href="{% url 'editar' postulante.id %}" role="button">Editar</a> 
+                                |<a name="" id="" class="btn btn-info" href="{% url 'idioma' postulante.id %}" role="button">Agregar Idioma</a>
+                                | <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' postulante.id %}" role="button">Borrar</a></td>
+                        {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div class="card-footer text-muted">
+            Footer
+        </div>
+    </div>
+{% endblock %}

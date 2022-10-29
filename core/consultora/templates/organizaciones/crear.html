@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+
+{% block titulo %} Agregar una Organizacion {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        Cargar una Organizacion
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la Organizacion</h4>
+        {% include 'organizaciones/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+{% endblock %}
