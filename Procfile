@@ -1,1 +1,1 @@
-web: gunicorn consultora.wsgi:application --log-file 
+web: gunicorn core.wsgi:application --log-file 
